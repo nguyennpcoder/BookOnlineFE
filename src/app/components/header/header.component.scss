@@ -1,0 +1,131 @@
+@import '../../styles/shared-styles.scss';
+
+header {
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(173, 178, 203);
+   
+}
+
+.navbar {
+    background-color: rgba(0, 0, 0, 0) !important;
+}
+
+.navbar .container {
+    background-color: rgba(255, 6, 6, 0) !important;
+}
+
+.navbar .container .navbar-brand {
+    color: #ffffff; /* Màu chữ cho navbar-brand */
+}
+
+.navbar .container .navbar-nav .nav-link {
+    color: #ffffff; /* Màu chữ cho các nav-link */
+    border-radius: 30px;
+    padding: 8px 16px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+// .navbar .container .navbar-nav .nav-link.active {
+//     background-color: $shopapp-color !important;
+//     color: rgb(253, 43, 43) !important;
+// }
+// .nav-item.active {
+//     background-color: $shopapp-color !important;
+//     color: white !important;
+
+// }
+.navbar .container .navbar-nav .nav-link.active {
+    background-color: $shopapp-color !important;
+    color: rgb(253, 43, 43) !important;
+}
+
+.nav-item.active .nav-link {
+    background-color: $shopapp-color !important;
+    color: white !important;
+}
+
+
+/* Add this CSS to your project's stylesheet */
+
+.popover-list {
+    padding: 10px;
+}
+.popover-body {
+    padding: 0px;
+}
+.popover-item {
+    display: block;
+    margin-bottom: 5px;
+    text-decoration: none;
+    color: #333;
+}
+
+.popover-item:hover {
+    background-color: #f0f0f0;
+    color: $shopapp-color;    
+}
+// .search-container {
+//     display: flex;
+//     align-items: center;
+// }
+
+// .search-icon {
+//     background: none;
+//     border: none;
+//     cursor: pointer;
+//     position: absolute;
+//     top: 50%;
+//     left: calc(50% + 225px); /* Điều chỉnh vị trí từ biểu tượng thông báo */
+//     transform: translateY(-50%);
+// }
+
+// .search-box {
+//     display: none;
+//     padding: 0px 10px;
+//     border: 1px solid #2d5261;
+//     border-radius: 2px;
+//     position: absolute;
+//     top: 50%;
+//     left: calc(50% + 150px); /* Điều chỉnh vị trí từ biểu tượng thông báo */
+//     transform: translateY(-50%);
+// }
+
+.show {
+    display: block;
+    left: calc(50% + 25px); /* Điều chỉnh vị trí từ biểu tượng thông báo */
+}
+
+.notification {
+    position: absolute;
+    top: 50%;
+    left: calc(50% + 275px); /* Điều chỉnh vị trí từ biểu tượng thông báo */
+    transform: translateY(-50%);
+}
+.login {
+    position: absolute;
+    top: 50%;
+    left: calc(50% + 320px); /* Điều chỉnh vị trí từ biểu tượng thông báo */
+    transform: translateY(-50%);
+}
+
+.user  {
+    position: absolute;
+    top: 50%;
+    left: calc(50% + 320px); /* Điều chỉnh vị trí từ biểu tượng thông báo */
+    transform: translateY(-50%);
+}
+
+header {
+    position: fixed; /* Cố định vị trí của header */
+    top: 0; /* Đặt header ở phía trên cùng */
+    left: 0; /* Đặt header ở bên trái cùng */
+    width: 100%; /* Chiều rộng của header phủ toàn bộ chiều rộng của trang */
+    z-index: 1000; /* Đảm bảo header nằm trên các phần tử khác */
+    background-color: #0c413d; /* Màu nền của header (thay đổi theo thiết kế của bạn) */
+    border-bottom: 1px solid #0d503d; /* Đường viền dưới header (thay đổi theo thiết kế của bạn) */
+}
+.cart-count{
+    color: red;
+}

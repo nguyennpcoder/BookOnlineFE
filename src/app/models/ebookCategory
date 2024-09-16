@@ -1,0 +1,8 @@
+import { Category } from './category';
+import { Ebook } from './ebook';
+export interface EbookCategory {
+
+    id: number;
+    ebook_id: Ebook;
+    category_id: Category;
+}

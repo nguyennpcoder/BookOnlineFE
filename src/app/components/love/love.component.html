@@ -1,0 +1,32 @@
+<app-header></app-header>
+
+<div class="container">
+    <h2 class="text-center text-header">Sản phẩm yêu thích của tôi</h2>      
+    
+    <div class="row">
+        <div *ngIf="!lovedItems || lovedItems.length === 0" class="row mb-3">
+            <div class="text-center count-item">
+                <br><br>
+                <p>Không có sản phẩm trong phần yêu thích</p>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4" *ngFor="let ebook of lovedItems">
+            <div class="ebook-item position-relative">
+                <button [ngClass]="{'love': !ebook.isLoved, 'love_red': ebook.isLoved}" (click)="toggleLove(ebook, $event)">
+                    <i class="fa fa-heart"></i>
+                </button>
+                <div class="love-container" (click)="onEbookClick(ebook.id)">
+                    <img [src]="ebook.thumbnail" alt="Ebook Image" class="ebook-image">
+                    <h4 class="ebook-name">{{ ebook.name }}</h4>
+                    <p class="ebook-title">{{ ebook.title }}</p>
+                    <div class="ebook-price">
+                        Giá: {{ formatPrice(ebook.price) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br><br><br><br><br>
+<app-footer></app-footer>

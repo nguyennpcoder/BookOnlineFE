@@ -1,0 +1,68 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="assets/poster/anhbia.jpg" alt="Anh Bìa" width="50" height="50">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Trang chủ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/loves" (click)="checklogin()" routerLinkActive="active">
+              <i class="hgi-solid hgi-favourite"></i>Yêu thích
+              <span *ngIf="loveItemCount > 0" class="cart-count">{{ loveItemCount }}</span></a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" routerLink="/orders" (click)="checklogin()" routerLinkActive="active">
+              <i class="fas fa-shopping-cart icon"></i> Giỏ hàng  <p>số lượng {{cartItemCount}}</p>
+            </a>
+            <div *ngIf="cartItemCount > 0" class="row mb-3">
+              <div class="col-md-12">
+                  <p>số lượng {{cartItemCount}}</p>
+                  
+              </div>
+          </div>
+          </li> -->
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/orders" (click)="checklogin()" routerLinkActive="active">
+              <i class="fas fa-shopping-cart icon"></i> Giỏ hàng 
+              <span *ngIf="cartItemCount > 0" class="cart-count">{{ cartItemCount }}</span>
+            </a>
+          </li>
+          
+
+          <li class="nav-item" *ngIf="userResponse">
+            <ng-container ngbPopover="Tài khoản của tôi, Đơn mua, Đăng xuất" popoverTitle="User Actions" triggers="click" [placement]="'bottom'">
+              <div class="notification">
+                <a class="nav-link" routerLink="/" routerLinkActive="active" (click)="setActiveNavItem(3)">
+                  <img src="../assets/icon-notification.svg">
+                </a>
+              </div> 
+              <a class="nav-link user" routerLinkActive="active" [ngbPopover]="popoverContent" 
+              (click)="togglePopover($event); setActiveNavItem(4)"> Hi! 
+                {{ userResponse.fullname }}
+              </a>
+              <ng-template #popoverContent>
+                <div class="popover-list">
+                  <a class="popover-item" routerLink="/user-profile" routerLinkActive="active" (click)="handleItemClick(0)">Tài khoản của tôi</a>
+                  <a class="popover-item" routerLink="/order-user" routerLinkActive="active" (click)="handleItemClick(1)">Đơn mua</a>
+                  <a class="popover-item" (click)="handleItemClick(2)">Đăng xuất</a>
+                </div>
+              </ng-template>
+            </ng-container>
+          </li>
+          <li class="nav-item" *ngIf="!userResponse">
+            <a class="nav-link login" routerLink="/login" routerLinkActive="active">Đăng nhập</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+<br><br><br>

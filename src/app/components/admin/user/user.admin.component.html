@@ -1,0 +1,60 @@
+<div class="container">
+
+  <h2>User Management</h2>
+
+  <!-- <button class="btn btn-primary mb-3" (click)="navigateToAddUser()">Add User</button> -->
+
+  <div class="search-bar mb-3">
+    <input type="text" class="form-control" [(ngModel)]="keyword" placeholder="Search by keyword">
+    <br>
+    <button class="btn btn-primary" (click)="searchUsers()">Search</button>
+  </div>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr >
+        <th>ID</th>
+        <th>Full Name</th>
+        <th>Role</th>
+        <th>Phone Number</th>
+        <th>Address</th>
+        <th>Date of Birth</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <tr class="item-user" *ngFor="let user of users">
+       <li> {{ user.id }}</li>
+        <td>{{ user.fullname }}</td>
+        <td>{{ user.role.name }}</td>
+        <td>{{ user.phone_number }}</td>
+        <td>{{ user.address }}</td>
+        <td>{{ user.date_of_birth | date: 'dd/MM/yyyy' }}</td>
+        <td>{{ user.is_active ? 'Online' : 'Blocked' }}</td>
+
+        <td>
+
+          <!-- &nbsp;&nbsp;<button class="btn btn-warning btn-sm" (click)="navigateToEditUser(user.id)">Refresh password</button> -->
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+          <button class="btn btn-danger btn-sm" (click)="toggleUserStatus(user)">
+            {{ user.is_active ? 'Block' : 'Enable' }}
+          </button>
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+
+  <div class="pagination">
+    <button class="btn btn-secondary" (click)="onPageChange(currentPage - 1)"
+      [disabled]="currentPage === 0">Previous</button>&nbsp;
+    <span>Page {{ currentPage + 1 }} of {{ totalPages }}</span>&nbsp;
+    <button class="btn btn-secondary" (click)="onPageChange(currentPage + 1)"
+      [disabled]="currentPage >= totalPages - 1">Next</button>
+  </div>
+
+</div>

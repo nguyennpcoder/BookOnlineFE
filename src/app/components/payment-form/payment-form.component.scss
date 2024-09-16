@@ -1,0 +1,81 @@
+// styles for the home component
+.container {
+    max-width: 1200px; // Adjust the max width for larger screens
+    margin: 0 auto;
+    padding: 20px;
+  
+    .row {
+      justify-content: center;
+    }
+  
+    .col-md-6 {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+    }
+  
+    .card {
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      max-width: 100%;
+      width: 100%;
+      background: #ffffff;
+      
+      .card-body {
+        padding: 30px;
+        text-align: center;
+  
+        img {
+          width: 150px; // Adjust the size of the logo
+          margin-bottom: 20px;
+        }
+  
+        h2.card-title {
+          font-size: 24px;
+          color: #333;
+          margin-bottom: 20px;
+          font-weight: 600;
+        }
+  
+        form {
+          .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+  
+            label {
+              font-size: 16px;
+              font-weight: 500;
+              color: #555;
+              display: block;
+              margin-bottom: 5px;
+            }
+  
+            input.form-control {
+              border-radius: 5px;
+              border: 1px solid #ddd;
+              padding: 10px;
+              font-size: 16px;
+            }
+          }
+  
+          .btn-primary {
+            background-color: #007bff;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+  
+            &:hover {
+              background-color: #0056b3;
+            }
+          }
+        }
+      }
+    }
+  }
+  

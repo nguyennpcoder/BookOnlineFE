@@ -1,0 +1,30 @@
+// li::marker
+// {
+//     content: "💩";
+//     font-size: 300px;
+// }   
+li::marker{
+    content: "👤";
+    white-space: nowrap;
+}
+
+.pagination{
+   
+    justify-content: center;
+}
+.btn-danger{
+    width: 70px;
+}
+.container {
+    background-color: white;
+    padding: 20px; 
+    min-height: 100vh; /* Ensure the container takes up at least the full height of the viewport */
+    display: flex;
+    flex-direction: column;
+  }
+  .item-user
+  {
+    &:hover {
+        border: 2px solid rgb(255, 111, 0);
+      }
+  }

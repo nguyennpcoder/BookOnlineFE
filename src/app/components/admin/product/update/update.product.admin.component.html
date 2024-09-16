@@ -1,0 +1,143 @@
+<div *ngIf="ebook">
+  <!-- Form cập nhật thông tin sản phẩm -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <h3>Update Product</h3>
+        <form (ngSubmit)="updateProduct()">
+          <!-- Row for Name and Title -->
+          <div class="form-row mb-3">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" [(ngModel)]="updatedEbook.name" name="name" class="form-control" required>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="title">Title:</label>
+                <textarea id="title" [(ngModel)]="updatedEbook.title" name="title" class="form-control" required></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row mb-3">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="document">Document:</label>
+                <textarea id="document" [(ngModel)]="updatedEbook.document" name="document" class="form-control" required></textarea>
+              </div>
+            </div>
+          </div>
+
+<!-- Categories -->
+<div>
+  <label for="categories">Categories:</label>
+  <div *ngFor="let category of categories">
+    <input type="checkbox" 
+           [checked]="isCategorySelected(category.id)" 
+           (change)="onCategoryChange($event, category.id)">
+    {{ category.name }}
+  </div>
+
+</div>
+
+
+          
+
+          
+          
+          <!-- <div class="form-group mb-3">
+            <label for="categories">Categories:</label>
+            <div *ngFor="let category of categories">
+              <input
+                type="checkbox"
+                [checked]="isCategorySelected(category.id)"
+                (change)="onCategoryChange($event, category.id)"
+                [value]="category.id"
+                id="category-{{category.id}}"
+              />
+              <label for="category-{{category.id}}">{{ category.name }}</label>
+            </div>
+          </div> -->
+
+          <!-- Row for Evaluate, Kind of Book, and Price -->
+          <div class="form-row mb-3">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="evaluate">Evaluate:</label>
+                <input type="number" id="evaluate" [(ngModel)]="updatedEbook.evaluate" name="evaluate" class="form-control" placeholder="0-10">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="kindofbook">Kind of Book:</label>
+                <select id="kindofbook" [(ngModel)]="updatedEbook.kindofbook" name="kindofbook" class="form-control" required>
+                  <option *ngFor="let kind of kindOfBookKeys" [value]="kind">{{ kindOfBookValues[kind] }}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="price">Price:</label>
+                <input type="text" id="price" [(ngModel)]=" updatedEbook.price" name="price" class="form-control" required>
+              </div>
+            </div>
+          </div>
+
+          
+          <!-- MP3 -->
+          <div class="row mb-3">
+            <div class="mp3-container">
+              <div *ngFor="let ebookMp3 of ebook.ebook_mp3s; let i = index" class="mp3-item">
+                <p>Part {{i + 1}}</p>
+                <audio controls [src]="ebookMp3.mp3_url"></audio>
+                <button type="button" class="btn btn-sm remove-mp3" (click)="deleteMp3(ebookMp3)">
+                  <i class="fa fa-times-circle text-danger"></i> Xóa
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="form-group mb-3">
+            <label for="mp3s">Add MP3s:</label>
+            <input type="file" id="mp3s" name="mp3s" multiple (change)="onMp3FileChange($event)" accept="audio/*" class="form-control">
+         
+          </div> -->
+          <div class="form-group mb-3">
+            <label for="mp3s">Add MP3s:</label>
+            <input type="file" id="mp3s" name="mp3s" multiple (change)="onMp3FileChange($event)" accept="audio/*" class="form-control">
+           
+          </div>
+          
+
+          <!-- Thumbnail Images -->
+          <div class="row mb-3">
+            <div class="thumbnail-container">
+              <div *ngFor="let ebookImage of ebook.ebook_images; let i = index" class="thumbnail-item" [ngClass]="{'active': i === currentImageIndex}" (click)="thumbnailClick(i)">
+                <img [src]="ebookImage.image_url" class="thumbnail-image" alt="Thumbnail Image">
+                <button type="button" class="btn btn-sm remove-image" (click)="deleteImage(ebookImage)">
+                  <i class="fa fa-times-circle text-danger"></i>
+                </button>
+              </div>
+              <ng-container *ngIf="ebook.ebook_images.length === 0">
+                <h2>No images found</h2>
+              </ng-container>
+            </div>
+          </div>
+
+  
+
+          <div class="form-group mb-3">
+            <label for="images">Add images (up to 5):</label>
+            <input type="file" id="images" name="images" multiple (change)="onFileChange($event)" accept="image/*">
+          </div>
+
+          <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+

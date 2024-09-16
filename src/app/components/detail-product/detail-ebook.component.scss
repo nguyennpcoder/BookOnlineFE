@@ -1,0 +1,389 @@
+@import '../../styles/shared-styles.scss';
+
+.intro-section {
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.ebook_image {
+    width: 70%;
+    max-width: 70%;
+    height: 250px;
+    /* Fixed height for uniform images */
+    margin-bottom: 10px;
+    object-fit: contain;
+    margin-left: 15%;
+
+}
+
+.thumbnail-container {
+    display: flex;
+    justify-content: center;
+    // justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 20px;
+   
+}
+
+.thumbnail-item {
+    width: 120px;
+    height: 120px;
+    margin-right: 5px;
+    /* Thêm khoảng cách ngang giữa các ảnh */
+}
+
+.thumbnail-item:last-child {
+    margin-right: 0;
+    /* Xóa khoảng cách ngang ở ảnh cuối cùng */
+}
+
+.thumbnail-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.thumbnail-item.active {
+    border: 4px solid $shopapp-tint-color;
+}
+
+.ebook-details {
+    color: white;
+    padding: 20px;
+}
+
+.ebook-actions {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
+}
+
+.ebook-actions button {
+    margin-right: 10px;
+}
+
+.border-wrapper {
+    border: 1px solid white;
+}
+
+.ebook-quantity {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 10px;
+}
+
+.ebook-quantity button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.ebook-quantity input {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    width: 40px;
+    margin: 0 10px;
+}
+
+.ebook-quantity input:focus {
+    outline: none;
+}
+
+.carousel-control-prev {
+    left: 10%;
+    /* Điều chỉnh vị trí để nút tiến gần hơn về phía trung tâm */
+}
+
+.carousel-control-next {
+    right: 11%;
+    /* Điều chỉnh vị trí để nút tiến gần hơn về phía trung tâm */
+}
+
+// .document {
+
+//     overflow-y: scroll;
+//     overflow-x: hidden;
+//     border: 1px solid #ccc;
+//     padding: 10px;
+//     background-color: black;
+//     max-height: 600px;
+// }
+
+// .document h2 {
+//     text-align: center;
+// }
+
+// .document p {
+//     margin: 0;
+//     padding: 0;
+//     font-size: 24px;
+//     text-align: justify;
+//     overflow-y: scroll;
+//     color: rgb(68, 206, 241);
+// }
+.ebook-price {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 10px;
+    
+}
+.ebook-price {
+    color: white;
+}
+
+.listenbook
+{   
+    width: 160px;
+    height: 40px;
+    margin-right: 0%;
+}
+.btn-document {
+    background-color: #4CAF50;
+    width: 100px;
+    height: 40px;
+    margin-left: 2%;
+    color: white;
+    
+}
+
+.document-overlay {
+    position: fixed; 
+    top: 20%;
+    left: 10%;
+    width: 80%; 
+    height: 60%; 
+    color: white;
+    background-color: rgba(40, 44, 49, 0.9); 
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Đổ bóng nhẹ
+    z-index: 1000; // Đảm bảo phần tử nằm trên các phần tử khác
+    overflow: auto; // Cho phép cuộn nếu nội dung lớn hơn kích thước phần tử
+    padding: 30px; // Khoảng cách bên trong
+    text-align: justify; /* Căn chữ đều hai bên */
+    border: 2px solid #a84caf;
+    &:hover {
+        border: 3px solid rgb(0, 149, 255);
+      }
+    
+  }
+  .document-overlay p {
+    font-size: 18px; /* Kích thước văn bản cho tiêu đề h1 */
+    
+  }
+  
+  .document-content {
+    position: relative;
+  }
+  
+
+
+//phân trang document
+// .document-overlay {
+//     position: fixed;
+//     top: 20%;
+//     left: 10%;
+//     width: 80%;
+//     height: 63%;
+//     background-color: rgba(255, 255, 255, 0.9);
+//     border-radius: 8px;
+//     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+//     z-index: 1000;
+//     overflow: hidden; // Hide scrollbars on overlay
+//     padding: 30px;
+//     text-align: justify;
+//     border: 2px solid #a84caf;
+  
+//     &:hover {
+//       border: 3px solid rgb(0, 149, 255);
+//     }
+  
+//     .document-content {
+//       position: relative;
+//       height: calc(100% - 50px); // Adjust based on pagination controls height
+//       overflow: hidden;
+  
+//       p {
+//         font-size: 18px;
+//         white-space: pre-wrap; // Preserve whitespace
+//         text-align: justify; // Justify text alignment
+//         // text-align-last: justify; // Justify the last line as well
+//         margin: 0; 
+//       }
+  
+//       .pagination-controls {
+//         position: absolute;
+//         bottom: 10px; // Distance from the bottom
+//         left: 50%;
+//         transform: translateX(-50%);
+//         display: flex;
+//         justify-content: space-between;
+//         width: calc(100% - 20px); // Adjust based on padding
+  
+//         button {
+//           padding: 10px 20px;
+//           border: 1px solid #ccc;
+//           background: #f0f0f0;
+//           cursor: pointer;
+  
+//           &:disabled {
+//             background: #e0e0e0;
+//             cursor: not-allowed;
+//           }
+//         }
+//       }
+  
+//       .close-button {
+//         position: absolute;
+//         bottom: 20px; // Distance from the bottom
+//         right: 10px; // Distance from the right
+//         // padding: 10px 20px;
+//         border: none;
+//         margin-top: 20px;
+//         background-color: #a84caf;
+//         color: white;
+//         cursor: pointer;
+  
+//         &:hover {
+//           background-color: #8a3f99;
+//         }
+//       }
+//     }
+//   }
+  
+  
+  .close-button {
+    position: absolute; // Đặt nút đóng ở vị trí tuyệt đối
+    top: 10px; // Khoảng cách từ trên cùng
+    right: 10px; // Khoảng cách từ bên phải
+    background: #e74c3c; // Màu nền đỏ cho nút đóng
+    color: #fff; // Màu chữ trắng
+    border: none; // Xóa đường viền
+    border-radius: 50%; // Bo tròn hình tròn
+    width: 50px; // Chiều rộng của nút
+    height: 50px; // Chiều cao của nút
+    display: flex; // Sử dụng flexbox để căn giữa chữ
+    align-items: center; // Căn giữa theo chiều dọc
+    justify-content: center; // Căn giữa theo chiều ngang
+    cursor: pointer; // Hiển thị con trỏ chuột khi di chuột qua
+  }
+  
+  .close-button:hover {
+    background: #c0392b; // Màu nền đỏ tối hơn khi di chuột qua
+    width: 50px;
+    height: 50px;
+  }
+  
+
+//////////////
+.audio-section {
+
+    align-items: center;
+
+}
+// .audio{
+   
+//     margin-left: 70%;
+// }
+// .audio-player {
+//     position: fixed;
+    
+//     margin-left: auto; 
+//     bottom: 10px;
+//     right: 10px;
+//     padding: 10px;
+//     border-radius: 5px;
+//     z-index: 1000;
+//     width: 100px; 
+//     transition: width 1s ease;
+  
+//     .play-button {
+//       display: flex;
+//       justify-content: center;
+//       align-items: center;
+//       width: 100%;
+//       height: 100%;
+//       background: transparent;
+//       border: none;
+//       cursor: pointer;
+  
+//       .spinner {
+//         width: 40px;
+//         height: 40px;
+//         border-radius: 50%;
+//         overflow: hidden;
+//         animation: spin 1s linear infinite;
+  
+//         img {
+//           width: 100%;
+//           height: 100%;
+//           object-fit: cover;
+//         }
+//       }
+//     }
+  
+//     &.playing {
+//       width: 300px;  /* Expanded width when playing */
+//     }
+//   }
+  
+//   @keyframes spin {
+//     0% { transform: rotate(0deg); }
+//     100% { transform: rotate(360deg); }
+//   }
+.love {
+    position: absolute;
+    background: url('assets/love3.png') no-repeat center center;
+    background-size: cover;
+    color: white;
+    border: none;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    filter: invert(100%);
+  }
+  
+  .love_red {
+    position: absolute;
+    background: url('assets/love.png') no-repeat center center;
+    background-size: cover;
+    color: white;
+    border: none;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    filter: invert(33%) sepia(84%) saturate(4458%) hue-rotate(340deg) brightness(92%) contrast(96%);
+  }
+  
+/* Ẩn menu tùy chọn trong trình phát trên trình duyệt WebKit (Chrome, Safari) */
+audio::-webkit-media-controls-enclosure {
+    overflow: hidden;
+  }
+  
+  /* Ẩn menu tùy chọn trong trình phát trên Firefox */
+  audio::-moz-media-controls-enclosure {
+    overflow: hidden;
+  }
+  
+  /* Ẩn menu ba chấm mà không ảnh hưởng đến các nút Phát và Tạm dừng */
+  audio::-webkit-media-controls-panel {
+    width: calc(100% - 40px); /* Điều chỉnh để ẩn nút ba chấm */
+  }
+  
+  /* Bảo đảm rằng các nút Phát và Tạm dừng vẫn hiển thị đầy đủ */
+  audio::-webkit-media-controls-play-button,
+  audio::-webkit-media-controls-pause-button,
+  audio::-webkit-media-controls-volume-slider {
+    display: block !important; /* Hiển thị các nút quan trọng */
+  }
+  

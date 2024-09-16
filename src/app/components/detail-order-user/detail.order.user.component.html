@@ -1,0 +1,148 @@
+<div appDisableKeys>
+  <app-header></app-header>
+  <div class="container">
+    <!-- <div class="row">
+      <div class="col-md-6">
+        <h3>Thông Tin Đơn Hàng</h3>
+        <p><strong>Mã Đơn Hàng:</strong> {{ orderResponse.id }}</p>
+        <p><strong>Mã Người Dùng:</strong> {{ orderResponse.user_id }}</p>
+        <p><strong>Họ Tên:</strong> {{ orderResponse.fullname }}</p>
+        <p><strong>Số Điện Thoại:</strong> {{ orderResponse.phone_number }}</p>
+        <p><strong>Ghi Chú:</strong> {{ orderResponse.note }}</p>
+        <p><strong>Ngày Đặt Hàng:</strong> {{ orderResponse.order_date | date: 'dd/MM/yyyy' }}</p>
+        <p><strong>Tổng Tiền:</strong> {{formatPrice(orderResponse.total_money) }}</p>
+        <p><strong>Phương Thức Thanh Toán:</strong> {{ orderResponse.payment_method }}</p>
+        <p><strong>Trạng Thái:</strong> 
+          {{ 
+            orderResponse.status === 'PROCESSING' ? 'Đang xử lý' : 
+            orderResponse.status === 'COMPLETE' ? 'Hoàn Thành' : 
+            'Đã Hủy' 
+          }}
+        </p>
+      </div>
+    </div> -->
+    <div class="row">
+      <div class="col-md-6">
+        <h3>Thông Tin Đơn Hàng</h3>
+        <br>
+        <div class="info-pair">
+          <p><strong>Mã Đơn Hàng:</strong> {{ orderResponse.id }}</p>
+          <p><strong>Mã Người Dùng:</strong> {{ orderResponse.user_id }}</p>
+        </div>
+
+        <div class="info-pair">
+          <p><strong>Họ Tên:</strong> {{ orderResponse.fullname }}</p>
+          <p><strong>Số Điện Thoại:</strong> {{ orderResponse.phone_number }}</p>
+        </div>
+
+        <div class="info-pair">
+          <p><strong>Ghi Chú:</strong> {{ orderResponse.note }}</p>
+          <p><strong>Ngày Đặt Hàng:</strong> {{ orderResponse.order_date | date: 'dd/MM/yyyy' }}</p>
+        </div>
+
+        <div class="info-pair">
+          <p><strong>Tổng Tiền:</strong> {{ formatPrice(orderResponse.total_money) }}</p>
+          <p><strong>Phương Thức Thanh Toán:</strong> {{ orderResponse.payment_method }}</p>
+        </div>
+
+        <!-- <p class=""><strong>Trạng Thái:</strong> 
+          {{ 
+            orderResponse.status === 'PROCESSING' ? 'Đang xử lý' : 
+            orderResponse.status === 'COMPLETE' ? 'Hoàn Thành' : 
+            'Đã Hủy' 
+          }}
+        </p> -->
+        <div class="info-pair">
+
+          <p class="status" [ngClass]="
+          {
+          'processing': orderResponse.status === 'PROCESSING',
+          'complete': orderResponse.status === 'COMPLETE',
+          'cancel': orderResponse.status === 'CANCEL'
+        }">
+            <strong>Trạng Thái:</strong>
+            {{
+            orderResponse.status === 'PROCESSING' ? 'Đang xử lý' :
+            orderResponse.status === 'COMPLETE' ? 'Hoàn Thành' :
+            'Đã Hủy'
+            }}
+          </p>
+
+       
+            <!-- <p class="active" [ngClass]="{
+              'active-true': orderResponse.active === true,
+              'active-false': orderResponse.active === false
+            }">
+            <strong>Hoạt Động:</strong>
+              {{
+                orderResponse.active === true ? 'Đang mở' : 'Đã Hủy'
+              }}
+            </p> -->
+            
+          
+          
+
+        </div>
+      </div>
+    </div>
+    <!-- <p><strong>Trạng Thái:</strong> {{ orderResponse.status === 'PROCESSING' ? 'Đang xử lý' : 'Hoàn Thành' }}</p> -->
+    <!-- <div class="form-group">
+        <label for="statusSelect"><strong>Trạng Thái:</strong></label>
+        <select class="form-control" id="statusSelect" [(ngModel)]="orderResponse.status"> -->
+    <!-- <option value="delivered">Đã Giao Hàng</option>
+          <option value="cancelled">Đã Hủy</option> -->
+    <!-- <option value="PROCESSING">Đang xử lý</option>
+          <option value="COMPLETE">Hoàn Thành</option>
+        </select>
+      </div> -->
+    <!-- </div>
+    </div> -->
+    <br>
+    <h3>Chi Tiết Đơn Hàng</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Sách</th>
+          <th>Ảnh bìa</th>
+          <!-- <th>Âm thanh</th> -->
+          <th>Giá</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody class="body">
+        <tr *ngFor="let order_detail of orderResponse.order_details; trackBy: trackByEbookName">
+          <td>{{ order_detail.ebook.id }}</td>
+          <td>{{ order_detail.ebook.name }}</td>
+          <td><img [src]="order_detail.ebook.thumbnail" alt="Ebook Image" class="ebook-image"></td>
+          <!-- <td>
+          <audio *ngIf="order_detail.ebook.audioUrl" controls>
+            <source [src]="order_detail.ebook.audioUrl" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio> 
+        </td> -->
+
+          <!-- <td>
+          <div *ngFor="let mp3 of order_detail.ebook.ebook_mp3s; let i = index" class="audio-section"
+               [ngClass]="{'active': i === currentMp3Index}">
+            <div class="audio-player" [ngClass]="{'playing': isPlaying}">
+              <p>Phần {{i + 1}}</p>
+              <audio controls (play)="onPlay()" (pause)="onPause()">
+                <source [src]="mp3.mp3_url" type="audio/mpeg">
+                Trình duyệt của bạn không hỗ trợ thẻ âm thanh.
+              </audio>
+            </div>
+          </div>
+        </td> -->
+
+          <td>{{formatPrice(order_detail.price) }}</td>
+          <td> <Button class="btn btn-primary" (click)="onEbookClick( order_detail.ebook.id)"> Đọc Ebook</Button></td>
+      </tbody>
+    </table>
+
+    <button class="back" (click)="back()"> Trở lại</button>
+    <!-- <button class="btn btn-primary" (click)="saveOrder()">Lưu</button>
+  <button class="btn btn-secondary" (click)="cancel()">Hủy</button> -->
+  </div>
+</div>
+<app-footer>

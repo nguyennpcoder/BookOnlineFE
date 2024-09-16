@@ -1,0 +1,103 @@
+@import '../../styles/shared-styles.scss';
+
+ 
+.page-number {
+    cursor: pointer;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    margin: 0 2px;
+    border-radius: 3px;
+}
+
+.page-number.active {
+    background-color: $shopapp-color !important;
+    color: #fff;
+    border-color: $shopapp-color !important;
+}
+
+.btn.btn-primary {
+    margin-left: 10px;
+}
+.container-fluid {
+    background-color: white;
+    padding-left: 0 !important; /* Remove left padding */
+    padding-right: 0 !important; /* Remove right padding */
+    height: 100vh;
+    
+    
+}
+.button-primary {
+    white-space: nowrap;
+}
+// phân trang: 
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; // You can adjust this value as needed
+  }
+  
+  .pagination {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  
+    .page-item {
+      margin: 0 5px;
+  
+      &.disabled .page-link {
+        pointer-events: none;
+        opacity: 0.6;
+      }
+  
+      &.active .page-link {
+        background-color: #007bff;
+        border-color: #007bff;
+        color: #fff;
+      }
+  
+      .page-link {
+        display: block;
+        padding: 0.5rem 0.75rem;
+        background-color: #fff;
+        border: 1px solid #dee2e6;
+        color: #007bff;
+        text-decoration: none;
+        border-radius: 0.25rem;
+        cursor: pointer;
+  
+        &:hover {
+          background-color: #e9ecef;
+          border-color: #dee2e6;
+        }
+      }
+    }
+  }
+  .status.processing {
+    color: orange; 
+  }
+  
+  .status.complete {
+    color: green;
+  }
+  
+  .status.cancel {
+    color: red; 
+  }
+  
+  .order-user
+  {
+    &:hover {
+      border: 2px solid rgb(255, 0, 200);
+    }
+  }
+  .active-true {
+    color: green; 
+  }
+  
+  .active-false {
+    color: red; 
+  }
+  .table{
+    background-color: rgb(31, 31, 30);
+  }

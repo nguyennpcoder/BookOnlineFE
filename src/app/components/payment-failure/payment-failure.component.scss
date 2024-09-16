@@ -1,0 +1,92 @@
+// Common styles for both success and failure pages
+.container {
+    max-width: 1200px; // Set a maximum width for the container
+    margin: 0 auto;    // Center align container
+    padding: 20px;     // Add padding to container
+  
+    .row {
+      justify-content: center; // Center align row contents
+    }
+  
+    .col-md-6 {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+    }
+  
+    .card {
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      max-width: 100%;
+      width: 100%;
+      background: #ffffff;
+  
+      .card-body {
+        padding: 30px;
+        text-align: center;
+  
+        h2.card-title {
+          font-size: 24px;
+          margin-bottom: 20px;
+          font-weight: 600;
+        }
+  
+        .form-group {
+          margin-bottom: 20px;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+  
+          label {
+            font-size: 16px;
+            font-weight: 500;
+            color: #555;
+            display: block;
+            margin-bottom: 5px;
+          }
+  
+          p {
+            font-size: 16px;
+            color: #333;
+            margin: 0;
+            white-space: nowrap; // Prevent text from wrapping
+            overflow: hidden;
+            text-overflow: ellipsis; // Add ellipsis for overflow text
+            max-width: 100%; // Ensure max width for text
+          }
+        }
+  
+        .btn-primary {
+          background-color: #007bff;
+          border: none;
+          color: #fff;
+          padding: 10px 20px;
+          border-radius: 5px;
+          font-size: 16px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+  
+          &:hover {
+            background-color: #0056b3;
+          }
+        }
+      }
+    }
+  }
+  
+  // Specific styles for success page
+  .success .card-body {
+    h2.card-title {
+      color: #28a745; // Green color for success
+    }
+  }
+  
+  // Specific styles for failure page
+  .failure .card-body {
+    h2.card-title {
+      color: #dc3545; // Red color for failure
+    }
+  }
+  

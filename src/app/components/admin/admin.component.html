@@ -1,0 +1,55 @@
+<div class="container-fluid">
+  <header class="header bg-light text-white d-flex justify-content-between">
+    <h1 class="header-title"> </h1>
+
+    <li class="nav-item" *ngIf="userResponse">
+      <div class="notification">
+        <a class="nav-link user" > Hi! {{ userResponse.fullname }}
+        </a>
+      </div>
+    </li>
+
+    <!-- Logout Button -->
+    <button class="btn btn-danger btn-sm" (click)="logout()">Logout</button>
+  </header>
+  <div class="row">
+    <nav id="sidebar" class="col-md-2 col-lg-2 d-md-block bg-light sidebar">
+      <ul class="nav flex-column">
+        <br><br>
+        <h3>Management</h3>
+        <li class="nav-item">
+          <a class="nav-link" (click)="showAdminComponent('users')" routerLink="/admin/users" routerLinkActive="active">
+            <i class="fab fa-user icon"></i> Users
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="showAdminComponent('orders')" routerLink="/admin/orders"
+            routerLinkActive="active">
+            <i class="fab fa-first-order icon"></i> Orders
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="showAdminComponent('categories')" routerLink="/admin/categories"
+            routerLinkActive="active">
+            <i class="fab fa-canadian-maple-leaf icon"></i> Categories
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="showAdminComponent('products')" routerLink="/admin/products"
+            routerLinkActive="active">
+            <i class="fab fa-codepen icon"></i> Ebook
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="showAdminComponent('comments')" routerLink="/admin/comments"
+            routerLinkActive="active">
+            <i class="fab fa-user icon"></i> Comments
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div class="main-content col-md-10 col-lg-10 overflow-auto">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

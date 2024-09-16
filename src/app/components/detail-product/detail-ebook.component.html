@@ -1,0 +1,112 @@
+<app-header></app-header>
+<div class="container">
+
+  <div class="intro-section">
+    <!-- Nội dung phần giới thiệu -->
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      
+      <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div *ngFor="let image of ebook?.ebook_images; let i = index" class="carousel-item"
+            [ngClass]="{'active': i === currentImageIndex}">
+            <!-- <button class="love" [ngClass]="{'loved': ebook.isLoved, 'not-loved': !ebook.isLoved}"
+              *ngIf="ebook && !ebook?.isLoved" (click)="addToLove(ebook, $event)">
+              <i class="fa fa-heart"></i>
+            </button> -->
+            <button [class.love]="!ebook?.isLoved" [class.love_red]="ebook?.isLoved" (click)="toggleLove(ebook, $event)">
+              <i class="fa fa-heart"></i>
+            </button>
+            <!-- <button class="love" [ngClass]="{'loved': ebook.isLoved, 'not-loved': !ebook.isLoved}"
+            *ngIf="ebook && !ebook?.isLoved" (click)="addToLove(ebook, $event)">
+              <i class="fa fa-heart"></i>
+            </button> -->
+
+            <div class="square-image">
+              <img [src]="image.image_url" class="ebook_image" alt="Ebook Image">
+            </div>
+          </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev"
+          (click)="previousImage()">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next"
+          (click)="nextImage()">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+      <div class="row">
+        <div class="thumbnail-container">
+          <div *ngFor="let image of ebook?.ebook_images; let i = index" class="thumbnail-item"
+            [ngClass]="{'active': i === currentImageIndex}" (click)="thumbnailClick(i)">
+            <img [src]="image.image_url" class="thumbnail-image" alt="Thumbnail Image">
+          </div>
+        </div>
+      </div>
+
+      <!-- <div *ngIf="isDocumentVisible" class="document-overlay">
+        <div class="document-content">
+          <h2 class="namebook">{{ ebook?.name }}</h2>
+          <br>
+          <p>{{ ebook?.document }}</p>
+          <button class="close-button" (click)="toggleDocumentVisibility()">Đóng</button>
+        </div>
+      </div> -->
+
+      <div *ngIf="isDocumentVisible" class="document-overlay">
+        <div class="document-content">
+          <h2 class="namebook">{{ ebook?.name }}</h2> <br>
+           
+          <p>{{ pages[currentPage - 1] }}</p>
+          
+          <!-- <div class="pagination-controls">
+            <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+            <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+          </div> -->
+          <button class="close-button" (click)="toggleDocumentVisibility()">Đóng</button>
+        </div>
+      </div>
+      
+
+      <div *ngFor="let mp3 of ebook?.ebook_mp3s; let i = index" class="audio-section"
+        [ngClass]="{'active': i === currentMp3Index}">
+        <div *ngIf="isAudioVisible" class="audio-player" [ngClass]="{'playing': isPlaying}">
+          <p>Phần {{i+1}}</p>
+          <audio controls controlsList="nodownload"  (play)="onPlay()" (pause)="onPause()">
+            <source [src]="mp3?.mp3_url" type="audio/mpeg">
+            Trình duyệt của bạn không hỗ trợ thẻ âm thanh.
+          </audio>
+        </div>
+      </div>
+    
+    </div>
+
+    <div class="col-md-6">
+      <div class="ebook-details">
+        <h2>{{ ebook?.name }}</h2>
+        <p>{{ ebook?.title }}</p>
+        <p  class="ebook-price">Giá: {{ formatPrice(ebook?.price) }}</p>
+        <button  class="btn btn-secondary listenbook" (click)="toggleAudioVisibility()">Nghe Sách</button>
+        <button class="btn btn-document" (click)="toggleDocumentVisibility()">Đọc Sách</button>
+        <div class="ebook-actions" >
+          <button [disabled]="isEbookPurchased || ebook?.active " class="btn btn-primary" (click)="addToCart()">Thêm vào giỏ hàng</button>
+          <button [disabled]="isEbookPurchased || ebook?.active " class="btn btn-success" (click)="buyNow()">Mua ngay</button>
+        </div>
+        <!-- <div class="ebook-actions" *ngIf="!isComplete">
+          <button class="btn btn-primary" (click)="addToCart()">Thêm vào giỏ hàng</button>
+          <button class="btn btn-success" (click)="buyNow()">Mua ngay</button>
+        </div> -->
+        
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<app-footer></app-footer>

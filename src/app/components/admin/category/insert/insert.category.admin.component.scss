@@ -1,0 +1,7 @@
+.container {
+    background-color: white;
+    padding: 20px; 
+    min-height: 100vh; /* Ensure the container takes up at least the full height of the viewport */
+    display: flex;
+    flex-direction: column;
+  }

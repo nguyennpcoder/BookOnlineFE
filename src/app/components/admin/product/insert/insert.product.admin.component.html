@@ -1,0 +1,93 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h3>Insert Product</h3>
+      <form (ngSubmit)="insertProduct()" enctype="multipart/form-data">
+        
+        <div class="form-row">
+          <div class="form-group col-md-6 name-title-group">
+            <label for="name">Name:</label>
+            <input
+              type="text"
+              id="name"
+              [(ngModel)]="insertEbookDTO.name"
+              name="name"
+              class="form-control"
+              required
+              #name="ngModel"
+            />
+            <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-danger">
+              <div *ngIf="name.errors?.['required']">Name ebook không được bỏ trống.</div>
+            </div>
+          </div>
+          
+          <div class="form-group col-md-6 name-title-group" >
+            <label for="title">Title:</label>
+            <textarea
+              id="title"
+              [(ngModel)]="insertEbookDTO.title"
+              name="title"
+              class="form-control"
+              required
+              #title="ngModel"
+            ></textarea>
+            <div *ngIf="title.invalid && (title.dirty || title.touched)" class="text-danger">
+              <div *ngIf="title.errors?.['required']">Title ebook không được bỏ trống.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group mb-3">
+          <label for="document">Document:</label>
+          <textarea id="document" [(ngModel)]="insertEbookDTO.document" name="document" class="form-control" required></textarea>
+        </div>
+        
+        <div class="form-group mb-3">
+          <label for="categories">Categories:</label>
+          <div *ngFor="let category of categories">
+            <label class="form-check-label">
+              <input 
+                type="checkbox"
+                (change)="onCategoryChange(category.id)"
+                [checked]="insertEbookDTO.category_id.includes(category.id)"
+              />
+              {{ category.name }}
+            </label>
+          </div>
+        </div>
+        
+
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="evaluate">Evaluate:</label>
+            <input type="number" id="evaluate" [(ngModel)]="insertEbookDTO.evaluate" name="evaluate" class="form-control">
+          </div>
+
+          <div class="form-group col-md-4">
+            <label for="kindofbook">Kind of Book:</label>
+            <select id="kindofbook" [(ngModel)]="insertEbookDTO.kindofbook" name="kindofbook" class="form-control" required>
+              <option *ngFor="let kind of kindOfBookKeys" [value]="kind">{{ kindOfBookValues[kind] }}</option>
+            </select>
+          </div>
+
+          <div class="form-group col-md-4">
+            <label for="price">Price:</label>
+            <input type="number" id="price" [(ngModel)]="insertEbookDTO.price" name="price" class="form-control">
+          </div>
+        </div>
+
+        <div class="form-group mb-3">
+          <label for="audios">Audios:</label>
+          <input type="file" id="audios" name="audios" multiple (change)="onMp3FileChange($event)" accept="audio/*" class="form-control">
+        </div>
+
+        <div class="form-group mb-3">
+          <label for="images">Images (up to 5):</label>
+          <input type="file" id="images" name="images" multiple (change)="onFileChange($event)" accept="image/*" class="form-control">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Insert</button>
+      </form>
+    </div>
+  </div>
+</div>

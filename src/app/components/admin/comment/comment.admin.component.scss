@@ -1,0 +1,58 @@
+html, body {
+  height: 100%; /* Ensure the HTML and body elements take up the full height */
+  margin: 0; /* Remove default margins */
+}
+
+.container-fluid {
+  background-color: white;
+  padding: 20px; 
+  min-height: 100vh; /* Ensure the container takes up at least the full height of the viewport */
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-admin h1 {
+  margin-bottom: 20px; /* Space below the header */
+}
+
+.loading-message {
+  font-size: 18px;
+  color: #666;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse; /* Collapse borders for a cleaner look */
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px; /* Padding inside cells */
+  text-align: left; /* Align text to the left */
+}
+
+th {
+  background-color: #f2f2f2; /* Light gray background for headers */
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9; /* Light gray background for even rows */
+}
+
+tr:hover {
+  background-color: #ddd; /* Highlight row on hover */
+}
+
+button {
+  background-color: #f44336; /* Red background for the delete button */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 4px; /* Rounded corners for the button */
+  font-size: 14px; /* Slightly larger text */
+}
+
+button:hover {
+  background-color: #d32f2f; /* Darker red on hover */
+}

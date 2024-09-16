@@ -1,0 +1,87 @@
+<h1>Chi Tiết Đơn Hàng</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h3>Thông Tin Đơn Hàng</h3>
+      <p><strong>Mã Đơn Hàng:</strong> {{ orderResponse.id }}</p>
+      <p><strong>Mã Người Dùng:</strong> {{ orderResponse.user_id }}</p>
+      <p><strong>Họ Tên:</strong> {{ orderResponse.fullname }}</p>
+      <p><strong>Số Điện Thoại:</strong> {{ orderResponse.phone_number }}</p>
+      <p><strong>Ghi Chú:</strong> {{ orderResponse.note }}</p>
+      <p><strong>Ngày Đặt Hàng:</strong> {{ orderResponse.order_date | date: 'dd/MM/yyyy' }}</p>
+      <p><strong>Tổng Tiền:</strong> {{ formatPrice(orderResponse.total_money) }}</p>
+      <p><strong>Phương Thức Thanh Toán:</strong> {{ orderResponse.payment_method }}</p>
+   
+
+      
+      <!-- <div class="form-group">
+        <label for="statusSelect"><strong>Trạng Thái:</strong></label>
+        <select class="form-control" id="statusSelect" [(ngModel)]="orderResponse.status" 
+        [attr.disabled]="orderResponse.status === 'COMPLETE' || 
+        orderResponse.status === 'CANCEL' ? true : null">
+          
+          <option value="PROCESSING">Đang xử lý</option>
+          <option value="COMPLETE">Hoàn Thành</option>
+          <option value="CANCEL">Đã Hủy</option> 
+        </select>
+      </div> -->
+      <div class="form-group">
+        <label for="statusSelect"><strong>Trạng Thái:</strong></label>
+        <select class="form-control" id="statusSelect" [(ngModel)]="orderResponse.status" 
+        [ngClass]="{
+          'status-processing': orderResponse.status === 'PROCESSING',
+          'status-complete': orderResponse.status === 'COMPLETE',
+          'status-cancel': orderResponse.status === 'CANCEL'
+        }"
+        [attr.disabled]="orderResponse.status === 'COMPLETE' || 
+        orderResponse.status === 'CANCEL' ? true : null">
+          <option value="PROCESSING">Đang xử lý</option>
+          <option value="COMPLETE">Hoàn Thành</option>
+          <option value="CANCEL">Đã Hủy</option>
+        </select>
+      </div>
+      
+    </div>
+  </div>
+  <h3>Chi Tiết Đơn Hàng</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Sách</th>
+        <th>Ảnh bìa</th>
+        <!-- <th>Âm thanh</th> -->
+        <th>Giá</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order_detail of orderResponse.order_details; trackBy: trackByEbookName">
+        <td>{{ order_detail.ebook.id }}</td>
+        <td>{{ order_detail.ebook.name }}</td>
+        <td><img [src]="order_detail.ebook.thumbnail" alt="Ebook Image" class="ebook-image"></td>
+        <!-- <td>
+          <div *ngFor="let mp3 of ebook?.ebook_mp3s; let i = index" class="audio-section"
+            [ngClass]="{'active': i === currentMp3Index}">
+
+            <div *ngIf="isAudioVisible" class="audio-player" [ngClass]="{'playing': isPlaying}">
+              <p>Phần {{i+1}} </p>
+              <button class="play-button" (click)="playAudio()">
+            
+              </button>
+              <audio controls (play)="onPlay()" (pause)="onPause()">
+                <source [src]="mp3?.mp3_url" type="audio/mpeg">
+            
+                <source [src]="ebook?.audioUrl">
+                Trình duyệt của bạn không hỗ trợ thẻ âm thanh.
+              </audio>
+            </div>
+          </div>
+        </td> -->
+        <td>{{ formatPrice( order_detail.price) }}</td>
+
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-primary" (click)="saveOrder()">Lưu</button>
+  <button class="btn btn-secondary" (click)="cancel()">Hủy</button>
+</div>

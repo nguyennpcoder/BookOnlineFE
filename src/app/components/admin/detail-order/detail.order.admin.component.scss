@@ -1,0 +1,35 @@
+.container{
+ height: 750px;
+}
+
+.back{
+    margin-right: 80%;
+}
+.ebook-image {
+    width: 50%;
+    max-width: 50%;
+    height: 110px; /* Fixed height for uniform images */
+    margin-bottom: 10px;
+    object-fit: contain; /* Ensure the whole image fits within the dimensions */
+
+}
+
+.status-processing {
+    color: orange; 
+  }
+  
+  .status-complete {
+    color: green; 
+  }
+  
+  .status-cancel {
+    color: red; 
+  }
+  .active-true {
+    color: green; 
+  }
+  
+  .active-false {
+    color: red; 
+  }
+  

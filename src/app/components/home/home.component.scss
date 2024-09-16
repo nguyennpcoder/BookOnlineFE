@@ -1,0 +1,302 @@
+@import '../../styles/shared-styles.scss';
+
+.intro-section {
+    text-align: center;
+    color: white;
+    padding: 20px;
+    
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.search-box .form-control,
+.search-box .btn {
+    font-size: 20px;
+    // font-weight: bold;
+}
+
+.ebook-category {
+    width: 200px;
+    border: 2px;
+}
+
+.search-input {
+    width: 300px;
+    background-color: $shopapp-background-color;
+    margin-right: 10px;
+    border-color: rgba(255, 255, 255, 0.5);
+    color: rgb(242, 0, 0);
+}
+
+.form-control {
+    background-color: transparent;
+    color: white;
+    border: 2px;
+}
+
+.form-control::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white;
+    opacity: 1;
+    /* Firefox */
+}
+
+.form-control:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.form-control::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.ebook-item {
+    background-color: $shopapp-background-color;
+    border: 3px solid rgb(0, 38, 255);
+    border-radius: 20px;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: center; /* Ensure centered content */
+    max-width: 300px;
+    max-height: 750px;
+
+}
+
+.ebook-image {
+    width: 70%;
+    max-width: 70%;
+    height: 250px; /* Fixed height for uniform images */
+    margin-bottom: 10px;
+    object-fit: contain; /* Ensure the whole image fits within the dimensions */
+}
+
+.ebook-name {
+    color: white;
+    font-size: 1.3rem; 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Responsive adjustments for .ebook-name */
+@media screen and (max-width: 1200px) {
+    .ebook-name {
+        font-size: 1.1rem;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .ebook-name {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .ebook-name {
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .ebook-name {
+        font-size: 0.8rem;
+    }
+}
+
+.ebook-title {
+    color: white;
+    font-size: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  
+  /* Responsive adjustments for .ebook-name */
+  @media screen and (max-width: 1200px) {
+    .ebook-title {
+      font-size: 1.1rem;
+    }
+  }
+  
+  @media screen and (max-width: 992px) {
+    .ebook-title {
+      font-size: 1rem;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .ebook-title {
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media screen and (max-width: 576px) {
+    .ebook-title {
+      font-size: 0.8rem;
+    }
+  }
+
+.ebook-warranty {
+    color: $shopapp-tint-color;
+}
+
+.ebook-price {
+    color: white;
+}
+
+.ebook-rating {
+    color: #FFD700;
+    margin-top: 10px;
+}
+
+.ebook-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.space-x {
+    margin: 0 5px;
+    /*margin-top, margin-right, margin-bottom, margin-left*/
+}
+
+.page-number {
+    cursor: pointer;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    margin: 0 2px;
+    border-radius: 3px;
+}
+
+.page-number.active {
+    background-color: $shopapp-color !important;
+    color: #fff;
+    border-color: $shopapp-color !important;
+}
+
+.btn-primary {
+    background-color: $shopapp-color;
+    border-color: $shopapp-color;    
+}
+
+.btn.btn-primary {
+    margin-left: 10px;
+}
+
+
+.banner {
+    position: relative;
+    background: url('assets/banner.png') no-repeat center center;
+    background-size: cover;
+    color: #fff;
+    // padding: 100px 20px;
+    height: 450px;
+    text-align: center;
+    margin-bottom: 40px;
+    // margin-top: 20px;
+    overflow: hidden; /* Đảm bảo lớp phủ không tràn ra ngoài */
+}
+
+.banner::before {
+    content: "";
+    position: absolute;
+    // top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(18, 20, 20, 0.8), rgba(25, 23, 23, 0) 70%);
+    z-index: 1; /* Đặt lớp phủ trên cùng của ảnh */
+    pointer-events: none; /* Đảm bảo lớp phủ không ảnh hưởng đến các phần tử con */
+}
+
+
+.banner-content {
+    max-width: 800px; /* Tăng chiều rộng tối đa cho nội dung bên trong banner */
+    margin: 0 auto; /* Căn giữa nội dung bên trong banner */
+}
+
+.banner h1 {
+    font-size: 3rem; /* Tăng kích thước chữ cho tiêu đề */
+    margin: 0;
+    font-weight: bold; /* Đặt độ dày của chữ để tiêu đề nổi bật hơn */
+}
+
+.banner p {
+    font-size: 1.2rem; /* Tăng kích thước chữ cho mô tả */
+    // margin: 10px 0 0;
+}
+
+.ebook-category option
+{
+    color: black;
+}
+.new {
+    position: absolute;
+    background: url('assets/new.png') no-repeat center center;
+    background-size: cover;
+    color: #fff;
+    height: 20px;
+    width: 50px;
+    right: 10px; /* Điều chỉnh giá trị này để đặt ảnh "new" đúng vị trí mong muốn */
+  bottom: 20px;
+}
+
+
+.ebook-price {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 10px;
+    
+}
+ 
+
+.ebook-item {
+    position: relative; /* Đảm bảo rằng phần tử cha của "love" và "new" có position: relative */
+    padding-right: 0px; /* Tạo khoảng trống bên phải cho ảnh "love" và "new" */
+    width: 400px;
+    height: 390px;
+    &:hover {
+        border: 3px solid rgb(255, 0, 0);
+      }
+}
+.love {
+    position: absolute;
+    background: url('assets/love3.png') no-repeat center center;
+    background-size: cover;
+    color: white;
+    border: none;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    filter: invert(100%);
+    &:hover {
+        border: 3px solid rgb(255, 111, 0);
+      }
+  }
+  
+  .love_red {
+    position: absolute;
+    background: url('assets/love.png') no-repeat center center;
+    background-size: cover;
+    color: white;
+    border: none;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    &:hover {
+        border: 3px solid rgb(203, 203, 203);
+      }
+    filter: invert(33%) sepia(84%) saturate(4458%) hue-rotate(340deg) brightness(92%) contrast(96%);
+  }
+  
+  

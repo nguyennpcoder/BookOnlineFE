@@ -1,0 +1,69 @@
+.back{
+    margin-right: 80%;
+}
+.ebook-image {
+    width: 50%;
+    max-width: 50%;
+    height: 110px; /* Fixed height for uniform images */
+    margin-bottom: 10px;
+    object-fit: contain; /* Ensure the whole image fits within the dimensions */
+
+}
+
+.container {
+    .row {
+      .col-md-6 {
+        h3 {
+          text-align: center;
+        }
+      }
+  
+      .info-pair {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+  
+        p {
+          flex: 1;
+          margin: 0;
+        }
+  
+        p + p {
+          margin-left: 20px;
+        }
+      }
+    }
+  
+    .ebook-image {
+      width: 50%;
+      max-width: 50%;
+      height: 110px; /* Fixed height for uniform images */
+      margin-bottom: 10px;
+      object-fit: contain; /* Ensure the whole image fits within the dimensions */
+    }
+  
+    .back {
+      margin-right: 80%;
+    }
+  }
+  .status.processing {
+    color: orange; /* Màu ví dụ cho trạng thái đang xử lý */
+  }
+  
+  .status.complete {
+    color: green; /* Màu xanh cho trạng thái hoàn thành */
+  }
+  
+  .status.cancel {
+    color: red; /* Màu đỏ cho trạng thái đã hủy */
+  }
+  
+  .active-true {
+    color: green; /* Example color for active status */
+  }
+  
+  .active-false {
+    color: red; /* Example color for inactive status */
+  }
+  
+  

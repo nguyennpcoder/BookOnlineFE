@@ -1,0 +1,105 @@
+<app-header></app-header>
+<div class="container">
+    <div class="intro-section">
+        <h1>Đây là trang Order</h1>
+       
+    </div>
+    <form [formGroup]="orderForm"> <!-- Thêm form và gán formGroup -->
+        <div class="row">
+            <div class="col-md-5">
+                <h2 class="ebook-header">Thông tin người mua</h2>
+                <div class="mb-3">
+                    <label for="fullname" class="form-label">Họ và tên</label>
+                    <input type="text"  formControlName="fullname"   class="form-control" id="fullname" 
+                        [class.is-invalid]="orderForm.get('fullname')!.invalid && orderForm.get('fullname')!.touched" readonly>
+                    @if(orderForm.get('fullname')!.invalid &&
+                        orderForm.get('fullname')!.touched) {
+                        <div class="invalid-feedback">
+                            Họ và tên là trường bắt buộc.
+                        </div>
+                    }                        
+                </div>
+                
+                <!-- <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" formControlName="email" class="form-control" id="email"
+                        placeholder="Nhập địa chỉ email">
+                </div> -->
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Số điện thoại</label>
+                    <input type="text" class="form-control" formControlName="phone_number"                         
+                        placeholder="Số điện thoại" 
+                        id="phone" 
+                        [class.is-invalid]="orderForm.get('phone_number')!.invalid && orderForm.get('phone_number')!.touched"  readonly>
+                        @if(orderForm.get('phone_number')!.invalid 
+                            && orderForm.get('phone_number')!.touched) {
+                            <div class="invalid-feedback">
+                                Số điện thoại là trường bắt buộc và ít nhất 6 ký tự.
+                            </div>
+                        }                        
+                </div>
+              
+                <div class="mb-3">
+                    <label for="note" class="form-label">Ghi chú</label>
+                    <textarea formControlName="note" class="form-control" id="note" placeholder="Nhập ghi chú"
+                        rows="3"></textarea>
+                </div>
+              
+                <div class="mb-3">
+                    <label for="payment_method" class="form-label">Phương thức thanh toán</label>
+                    <select formControlName="payment_method" class="form-select" id="payment_method">
+                       <option value="VNPay">VN Pay</option>
+                       <!-- <option value="cod">Thanh toán khi nhận hàng (COD)</option> -->
+                       
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-7"> <br>
+                
+                <div  *ngFor="let item of cartItems; let i = index" class="itemebook row mb-3" (click)="onEbookClick(item.ebook.id)" >
+                    <div class="col-md-3">
+                         <img [src]="item.ebook.thumbnail" alt="Ebook Image" class="ebook-image">
+                    </div>
+                    <div class="col-md-5">
+                        <br>
+                        <h5>{{ item.ebook.name }}</h5>
+                        <p>{{ item.ebook.title }}</p>
+                        <p>Giá: {{ formatPrice(item.ebook.price) }}</p>
+                       
+                    </div>
+                    <div class="col-md-4">
+                        <button class="btn btn-sm btn-danger" (click)="confirmDelete(i)">Xóa</button>
+                    </div>
+                </div>
+
+                <div *ngIf="!cartItems || cartItems.length === 0" class="row mb-3">
+                    <div class="col-md-12 count-item">
+                        <p>Không có sản phẩm trong giỏ hàng</p>
+                        
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                   
+                    <div class="col-md-6">
+                        <div class="text-end">
+                            <!-- <p class="fw-bold">Tổng tiền: {{ totalAmount | currency:'VND':'symbol':'1.0-0' }}</p> -->
+                            <!-- <p *ngIf="couponApplied">Giảm giá: {{ couponDiscount | currency:'VND':'symbol':'1.0-0' }} </p> -->
+                            <p class="fw-bold">Tổng cộng: {{ formatPrice( totalAmount - couponDiscount) }}</p>
+                        </div>
+                    </div>
+                    <div class="text-end">
+                        <button type="submit" class="btn btn-success" (click)="placeOrder()">Mua hàng</button>
+                        <!-- <button type="submit" class="btn btn-primary" >Tiếp tục mua</button>
+                        <button type="submit" class="btn btn-danger" >Xóa giỏ hàng</button> -->
+                    </div>
+                </div>
+                <hr>
+               
+            </div>
+        </div>
+    </form>
+
+</div>
+<br><br>
+<app-footer></app-footer>

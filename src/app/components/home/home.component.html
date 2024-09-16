@@ -1,0 +1,75 @@
+<app-header></app-header>
+ 
+<div class="banner"> </div>
+<div class="container">
+  <div class="search-box">
+    <input type="text" class="form-control search-input" placeholder="Tìm sản phẩm" [(ngModel)]="keyword">
+    <select class="form-control ebook-category" [(ngModel)]="selectedCategoryId">
+      <option [value]="0">Tất cả</option>
+      <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+    </select>
+    <button class="btn btn-primary" (click)="searchEbooks()">Tìm kiếm</button>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-3 col-md-5" *ngFor="let ebook of ebooks">
+      <div class="ebook-item" (click)="onEbookClick(ebook.id)">
+        <button [class.love]="!ebook.isLoved" [class.love_red]="ebook.isLoved" (click)="toggleLove(ebook, $event)">
+          <i class="fa fa-heart"></i>
+        </button>
+        
+        <!-- <button class="love_red" *ngIf="ebook.isLoved" (click)="toggleLove(ebook, $event)">
+          <i class="fa fa-heart"></i>
+        </button> -->
+        
+        <img [src]="ebook.url" alt="Ebook Image" class="ebook-image">
+        <h4 class="ebook-name">{{ ebook.name }}</h4>
+        <p class="ebook-title">{{ ebook.title }}</p>
+        <!-- <p class="ebook-kindofbook">{{ ebook.kindofbook }}</p> -->
+        <div class="ebook-price">
+          Giá: {{ formatPrice(ebook.price) }}
+          <div class="new"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <br><br>
+  <div class="d-flex justify-content-center">
+    <nav aria-label="Page navigation">
+      <ul class="pagination">
+        @if(currentPage > 0) {
+        <li class="page-item">
+          <a class="page-link" (click)="onPageChange(0)">First</a>
+        </li>
+        }
+        @if(currentPage > 0) {
+        <li class="page-item">
+          <a class="page-link" (click)="onPageChange(currentPage - 1)">
+            <i class="fa fa-chevron-left"></i>
+          </a>
+        </li>
+        }
+        @for(page of visiblePages; track page) {
+        <ng-container>
+          <li class="page-item" [ngClass]="{'active': page === currentPage + 1}">
+            <a class="page-link" (click)="onPageChange(page - 1)">{{ page }}</a>
+          </li>
+        </ng-container>
+        }
+
+        @if(currentPage < totalPages - 1) { <li class="page-item">
+          <a class="page-link" (click)="onPageChange(currentPage + 1)">
+            <i class="fa fa-chevron-right"></i>
+          </a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" (click)="onPageChange(totalPages - 1)">Last</a>
+          </li>
+          }
+      </ul>
+    </nav>
+  </div>
+</div>
+<app-footer></app-footer>

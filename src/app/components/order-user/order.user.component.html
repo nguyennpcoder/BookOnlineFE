@@ -1,0 +1,103 @@
+<app-header></app-header>
+<div class="container">
+  <h1>Orders User Page</h1>
+  <div class="row mb-3">
+    <div class="col-md-8">
+      <input type="text" class="form-control search-input" placeholder="Tìm đơn hàng" [(ngModel)]="keyword">
+    </div>
+    <div class="col-md-4">
+      <button (click)="searchOrders()" class="btn btn-primary">Tìm kiếm</button>
+    </div>
+  </div>
+  <table class="table">
+    <thead>
+      <tr class="table">
+        <th>ID</th>
+        <th>Phone Number</th>
+        <th>Full Name</th>
+       
+        <th>Note</th>
+        <th>Order Date</th>
+        <th>Total Money</th>
+        <th>Status Payment</th>
+        <th>Payment</th>
+        <th>active Order</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="order-user" *ngFor="let order of orders; trackBy: trackByOrderId">
+        <td>{{ order.id }}</td>
+        <td>{{ order.phone_number }}</td>
+        <td>{{ order.fullname }}</td>
+        
+        <td>{{ order.note }}</td>
+        <td>{{ order.order_date | date: 'dd/MM/yyyy' }}</td>
+        <td>{{ formatPrice (order.total_money) }}</td>
+        <!-- <td>{{ order.status }}</td> -->
+         <!-- <td>{{ order.status === 'PROCESSING' ? 'Đang xử lý' : 'Hoàn Thành' }}</td> -->
+         <!-- <td>
+          {{ order.status === 'PROCESSING' ? 'Đang xử lý' : 
+             order.status === 'COMPLETE' ? 'Hoàn Thành' :
+             'Đã Hủy' }}
+        </td> -->
+        <td>
+          <p class="status" [ngClass]="{
+            'processing': order.status === 'PROCESSING',
+            'complete': order.status === 'COMPLETE',
+            'cancel': order.status === 'CANCEL'
+          }">
+            <!-- <strong>Trạng Thái:</strong>  -->
+            {{ 
+              order.status === 'PROCESSING' ? 'Đang xử lý' : 
+              order.status === 'COMPLETE' ? 'Hoàn Thành' : 
+              'Đã Hủy' 
+            }}
+          </p>
+        </td>
+        
+        <td>{{ order.payment_method }}</td>
+       
+        <td>
+          <p class="active" [ngClass]="{
+            'active-true': order.active === true,
+            'active-false': order.active === false
+          }">
+            {{
+              order.active === true ? 'Đang mở' : 'Tạm khóa'
+            }}
+          </p>
+          
+        </td>
+        <td>
+          <div style="display: flex; gap: 10px;">
+            <button (click)="viewDetails(order)" class="btn btn-primary">Xem chi tiết</button>
+            <!-- <button (click)="buyment(order)" class="btn btn-primary "*ngIf="order.status === 'PROCESSING'" >mua lại</button> -->
+            <!-- <button (click)="buyment(order)" class="btn btn-danger" *ngIf="order.status === 'PROCESSING'">Tiếp tục mua</button> -->
+            <button (click)="CancelOrder(order)" class="btn btn-danger" *ngIf="order.status === 'PROCESSING'">Hủy</button>
+
+            <!-- <button (click)="CancelOrder(order)" class="btn btn-primary">Hủy</button> -->
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <div class="pagination-container">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item" [class.disabled]="currentPage === 0">
+          <a class="page-link" (click)="onPageChange(currentPage - 1)">Previous</a>
+        </li>
+        <li class="page-item" *ngFor="let page of visiblePages" [class.active]="page === currentPage + 1">
+          <a class="page-link" (click)="onPageChange(page - 1)">{{ page }}</a>
+        </li>
+        <li class="page-item" [class.disabled]="currentPage + 1 === totalPages">
+          <a class="page-link" (click)="onPageChange(currentPage + 1)">Next</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br> 
+<app-footer></app-footer>
